@@ -1,0 +1,160 @@
+ <!DOCTYPE HTML>
+<html>
+    <head></head>
+    <script src="js/angular.js" type="text/javascript"></script>
+    <body>
+    <!-- Your code here -->
+        <!-- example data binding -->
+         <h3 ng-app ng-init="name='Ari Fakhri Wilaga'" >
+		    Hello {{ name }}
+		    <span ng-bind="name"></span>
+		<h3>
+		<!-- example Initialize Value -->
+		<!-- example string -->
+		<h3 ng-app data-ng-init="first='A';last='Wilaga'" >
+		    Fullname : {{ first }} {{ last }}
+		<h3>
+		<!-- example numeric -->
+		<h3 ng-app data-ng-init="quantity=7;price=100" >
+		    Total Price : Rp. {{ quantity * price }}
+		<h3>
+		<!-- example array -->
+		<p ng-app data-ng-init="brands=['Tisaba', 'Palaron', 'Sungsang']" >
+		    Brand One : {{ brands[0] }} <br />
+		    Brand Two : {{ brands[1] }} <br />
+		    Brand Three : {{ brands[2] }}
+		<p>
+		<!-- end initialize value -->
+		<!-- conditional statement -->
+		<!-- ng-if -->
+		<p ng-app data-ng-init="brands=['Tisaba', 'Palaron', 'Sungsang']" >
+		    Brand One : {{ brands[0] }} <br />
+		    <span ng-if="brands[1] == 'Palaron'">Brand Two : {{ brands[1] }} <br /><span>
+		    Brand Three : {{ brands[2] }}
+		<p>
+		<!-- ng-switch -->
+		 <p ng-app data-ng-init="quantity=7;price=100" >
+		    Total Price : Rp. {{ total = quantity * price }}
+		    Description :
+		    <span ng-switch on="total">
+		    <b ng-switch-when="600">Cheap</b>
+		    <b ng-switch-when="700">Fair Enough </b>
+		    <b ng-switch-when="800">Expensive</b>
+		    <b ng-switch-default>Too Much</b>
+		    </span>
+		<p>
+		<!-- end conditional -->
+		<!-- example looping -->
+		 <p ng-app data-ng-init="brands=[{name:'Tisaba', price:700}, {name:'Palaron', price: 800}, {name:'Sungsang', price:900}]" >
+		    <span ng-repeat="brand in brands track by $index">
+		        No: {{ $index }}. Brand : {{ brand.name }} , Price : Rp. {{ brand.price }} <br />
+		    </span>
+		<p>
+		<!-- end looping -->
+		<!-- example filter -->
+		<!-- example global filter -->
+		 <p ng-app data-ng-init="menus=[{
+			food:'nasi padang',price:13000},{
+			food:'nasi goreng',price:10000},{
+			food:'nasi kuning',price:7000
+		}]">
+	    <!-- filter all object that contain '7' character -->
+	    <span ng-repeat="menu in menus | filter:'goreng' track by $index">
+	        No: {{ $index }}. Menu : {{ menu.food }} , Price : Rp. {{ menu.price }} <br />
+	    </span>
+		<p>
+		<!-- end global filter -->
+
+		<!-- example specific object filter -->
+		 <p ng-app data-ng-init="menus=[{
+			food:'nasi padang',price:13000},{
+			food:'nasi goreng',price:10000},{
+			food:'nasi kuning',price:7000
+		}]">
+	    <!-- filter all object that contain '7' character -->
+	    <span ng-repeat="menu in menus | filter:{food:'goreng',price:'1'} track by $index">
+	        No: {{ $index }}. Menu : {{ menu.food }} , Price : Rp. {{ menu.price }} <br />
+	    </span>
+		<p>
+		<!-- end specific filter -->
+
+		<!-- example currency filter -->
+		 <p ng-app data-ng-init="menus=[{
+			food:'nasi padang',price:13000},{
+			food:'nasi goreng',price:10000},{
+			food:'nasi kuning',price:7000
+		}]">
+	    <span ng-repeat="menu in menus track by $index">
+	        No: {{ $index }}. Menu : {{ menu.food }} , Price :{{ menu.price |currency:"Rp."  }} <br />
+	    </span>
+		<p>
+		<!-- end currency filter -->
+
+		<!-- example number filter -->
+		 <p ng-app data-ng-init="menus=[{
+			food:'nasi padang',price:13000},{
+			food:'nasi goreng',price:10000},{
+			food:'nasi kuning',price:7000
+		}]">
+	    <span ng-repeat="menu in menus track by $index">
+	        No: {{ $index }}. Menu : {{ menu.food }} , Price :{{ menu.price |number  }} <br />
+	    </span>
+		<p>
+		<!-- end number filter -->
+
+		<!-- example json filter -->
+		<p ng-app data-ng-init="menus=[{
+			food:'nasi padang',price:13000},{
+			food:'nasi goreng',price:10000},{
+			food:'nasi kuning',price:7000
+		}]">
+		     <!-- will return json with two spaces -->
+		    <span>{{ menus | json:2 }}</span>
+		</p>
+		<!-- end json filter -->
+
+		<!-- example uppercase filter -->
+		 <p ng-app data-ng-init="Brands=[{
+			name:'cosmic',price:13000},{
+			name:'smith',price:100000},{
+			name:'prodigo',price:7000000
+		}]">
+	    <span ng-repeat="brand in Brands track by $index">
+	        No: {{ $index }}. Menu : {{ brand.name | uppercase }} , Price :{{ menu.price |number  }} <br />
+	    </span>
+		<p>
+		<!-- end number filter -->
+
+		<!-- example limitTo filter -->
+		 <p ng-app data-ng-init="brands=[{
+			name:'cosmic',price:13000},{
+			name:'smith',price:100000},{
+			name:'prodigo',price:7000000
+		}]">
+		<!-- will return two object from index one -->
+	    <span>{{ brands | limitTo:2:1 }}</span>
+		<p>
+		<!-- end limitTo filter -->
+
+		<!-- example orderBy filter -->
+		 <p ng-app data-ng-init="menus=[{
+			food:'nasi padang',price:13000},{
+			food:'nasi goreng',price:10000},{
+			food:'nasi kuning',price:7000
+		}]">
+	    <span ng-repeat="menu in menus | orderBy:'price' track by $index">
+	        No: {{ $index }}. Menu : {{ menu.food }} , Price : Rp. {{ menu.price }} <br />
+	    </span>
+		<p>
+		<!-- end orderBy filter -->
+
+		<!-- click action -->
+		<p ng-app ng-click="name='AngularJs'" data-ng-init="name='Click Me'">
+
+		    <span ng-bind="name"></span>
+
+		</p>
+		<!-- end click -->
+	<!-- end code-->
+    </body>
+<html>
